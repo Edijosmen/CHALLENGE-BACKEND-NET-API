@@ -167,6 +167,7 @@ namespace CHALLENGE_BACKEND.Controllers
             {
                 var personaje =  await _PService.BuscarPersonaje(id);
                 if (personaje == null) return NotFound(new { message = "No hay registro" });
+                await _AlmacenArchivo.BorraArchivo(personaje.Imagen,img);
                 await _PService.Eliminar(personaje);
                 return Ok(new {message="Registro Eliminado"});
             }

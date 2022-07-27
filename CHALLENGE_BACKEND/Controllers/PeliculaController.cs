@@ -148,9 +148,10 @@ namespace CHALLENGE_BACKEND.Controllers
         {
             try
             {
-                var personaje = await _Pservice.BuscarPelicula(id);
-                if (personaje == null) return NotFound(new { message = "No hay registro" });
-                await _Pservice.Eliminar(personaje);
+                var pelicula = await _Pservice.BuscarPelicula(id);
+               await _AlmacenArchivo.BorraArchivo(pelicula.Imagen,img);
+                if (pelicula == null) return NotFound(new { message = "No hay registro" });
+                await _Pservice.Eliminar(pelicula);
                 return Ok(new { message = "Registro Eliminado" });
             }
             catch (Exception ex)
