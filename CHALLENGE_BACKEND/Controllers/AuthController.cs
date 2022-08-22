@@ -19,7 +19,7 @@ namespace CHALLENGE_BACKEND.Controllers
             _Configuration = configuration;
         }
         [HttpPost("login")]
-        //[Route("/login")]
+        
         public async Task<IActionResult> Post(UsuarioAuthDto authDto)
         {
             try
